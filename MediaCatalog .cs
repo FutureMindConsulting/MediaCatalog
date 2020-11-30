@@ -6,6 +6,8 @@ namespace MediaCatalog
 {
     class MediaCatalog
     {
+        const int lowestYear = 2010;
+
         int _nextMediaID;
         Dictionary<int, Media> medias;
 
@@ -19,6 +21,10 @@ namespace MediaCatalog
 
         public void AddMedia(Media aMedia)
         {
+            if (aMedia.Year < lowestYear)
+            {
+                throw new ArgumentOutOfRangeException($"Year NOT allowed to be less than {lowestYear}");
+            }
             medias.Add(aMedia.MediaID, aMedia);
         }
 

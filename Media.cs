@@ -5,10 +5,14 @@ using System.Text;
 namespace MediaCatalog
 {
     class Media
-    {
-        public Media(int ID )
+    { 
+        public Media(int ID, string author, string title, int year, string publisher )
         {
             MediaID = ID;
+            Author = author;
+            Title = title;
+            Year = year;
+            Publisher = publisher;
         }
         public int MediaID { get; private set; }
 
