@@ -22,5 +22,24 @@ namespace MediaCatalog
             medias.Add(aMedia.MediaID, aMedia);
         }
 
+        public void PrintMediaList()
+        {
+            int lineNumber = 0;
+            foreach(Media m in medias.Values)
+            {
+                lineNumber++;
+                Console.WriteLine($"Line number: {lineNumber},  {m}" );
+            }
+        }
+
+        public Media GetMedia(int mediaID)
+        {
+            Media result = null;
+            medias.TryGetValue(mediaID, out result);
+            return result;
+        }
+
+
+
     }
 }

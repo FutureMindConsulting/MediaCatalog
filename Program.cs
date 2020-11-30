@@ -37,9 +37,11 @@ namespace MediaCatalog
             };
             mCat.AddMedia(m3);
 
-            Console.WriteLine(m1);
-            Console.WriteLine(m2);
-            Console.WriteLine(m3);
+            //Console.WriteLine(m1);
+            //Console.WriteLine(m2);
+            //Console.WriteLine(m3);
+
+            mCat.PrintMediaList();
 
             Console.WriteLine("Media catalog ending");
     }
