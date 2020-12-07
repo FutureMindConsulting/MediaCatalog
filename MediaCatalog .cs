@@ -8,23 +8,24 @@ namespace MediaCatalog
     {
         const int lowestYear = 2010;
 
-        int _nextMediaID;
+        //Ensures that there wil be only one Media object with the same MediaID in the MediaCatalog. 
         Dictionary<int, Media> medias;
-
-        public int NextMediaID { get { return _nextMediaID++; } }
         
         public MediaCatalog()
         {
-            _nextMediaID = 0;
             medias = new Dictionary<int, Media>();
         }
 
         public void AddMedia(Media aMedia)
         {
+            //Start: Assignment 6
             if (aMedia.Year < lowestYear)
             {
-                throw new ArgumentOutOfRangeException($"Year NOT allowed to be less than {lowestYear}");
+                throw new ArgumentException($"Year NOT allowed to be less than {lowestYear}");
             }
+            //End: Assignment 6
+
+            //No need to check MediaID, because af dictionary implementation
             medias.Add(aMedia.MediaID, aMedia);
         }
 
@@ -45,7 +46,22 @@ namespace MediaCatalog
             return result;
         }
 
+        public List<Media> GetMediaByAuthor(string author)
+        {
+            List<Media> result = null;
 
+            foreach(var m in medias)
+            {
+                if (result == null)
+                   result = new List<Media>();
 
+                if (m.Value.Author == author)
+                {
+                    result.Add(m.Value);
+                }
+
+            }
+            return result;
+        }
     }
 }
